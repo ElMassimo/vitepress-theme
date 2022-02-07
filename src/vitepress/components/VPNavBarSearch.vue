@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import '@docsearch/css'
 import { useData } from 'vitepress'
 import { ref, defineAsyncComponent, onMounted, onUnmounted } from 'vue'
 
@@ -28,131 +27,88 @@ onMounted(() => {
   onUnmounted(remove)
 })
 
-function load() {
-  if (!loaded.value) {
+function load () {
+  if (!loaded.value)
     loaded.value = true
-  }
+  else
+    document.querySelector<HTMLElement>('.DocSearch-Button')?.click()
 }
 </script>
 
 <template>
-  <div v-if="theme.algolia" class="VPNavBarSearch">
-    <VPAlgoliaSearchBox v-if="loaded" />
-    <div v-else id="docsearch" @click="load">
-      <button
-        type="button"
-        class="DocSearch DocSearch-Button"
-        aria-label="Search"
+  <button
+    v-if="theme.algolia"
+    type="button"
+    class="search-button"
+    aria-label="Search"
+    @click="load"
+  >
+    <span class="search-button-container">
+      <svg
+        width="20"
+        height="20"
+        class="DocSearch-Search-Icon"
+        viewBox="0 0 20 20"
       >
-        <span class="DocSearch-Button-Container">
-          <svg
-            width="20"
-            height="20"
-            class="DocSearch-Search-Icon"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-              stroke="currentColor"
-              fill="none"
-              fill-rule="evenodd"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </svg>
-          <span class="DocSearch-Button-Placeholder">Search</span>
-        </span>
-        <span class="DocSearch-Button-Keys">
-          <span class="DocSearch-Button-Key">⌘</span>
-          <span class="DocSearch-Button-Key">K</span>
-        </span>
-      </button>
-    </div>
-  </div>
+        <path
+          d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+          stroke="currentColor"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+      <span class="search-placeholder">Search</span>
+    </span>
+    <span class="search-keys">
+      <span class="search-key">⌘</span>
+      <span class="search-key">K</span>
+    </span>
+  </button>
+  <VPAlgoliaSearchBox v-if="loaded"/>
 </template>
 
 <style>
-.VPNavBarSearch {
-  display: flex;
-  align-items: center;
-  padding-left: 16px;
+#docsearch {
+  display: none;
 }
 
-@media (min-width: 768px) {
-  .VPNavBarSearch {
-    flex-grow: 1;
-  }
-}
-
-.DocSearch {
-  --docsearch-primary-color: var(--vt-c-brand);
-  --docsearch-highlight-color: var(--docsearch-primary-color);
-  --docsearch-text-color: var(--vt-c-text-1);
-  --docsearch-muted-color: var(--vt-c-text-2);
-  --docsearch-searchbox-shadow: none;
-  --docsearch-searchbox-focus-background: transparent;
-  --docsearch-key-gradient: transparent;
-  --docsearch-key-shadow: none;
-  --docsearch-modal-background: var(--vt-c-bg-soft);
-  --docsearch-footer-background: var(--vt-c-bg);
-}
-
-.dark .DocSearch {
-  --docsearch-modal-shadow: none;
-  --docsearch-footer-shadow: none;
-  --docsearch-logo-color: var(--vt-c-text-2);
-  --docsearch-hit-background: var(--vt-c-bg-mute);
-  --docsearch-hit-color: var(--vt-c-text-2);
-  --docsearch-hit-shadow: none;
-}
-
-.dark .DocSearch-Footer {
-  border-top: 1px solid var(--vt-c-divider);
-}
-
-.dark .DocSearch-Form {
-  background-color: var(--vt-c-bg-mute);
-}
-
-.DocSearch-Form {
-  background-color: white;
-  border: 1px solid var(--vt-c-brand);
-}
-
-.DocSearch-Button-Container {
+.search-button-container {
   align-items: center;
   display: flex;
 }
 
-.DocSearch-Button {
+.search-button {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin: 0;
   width: 48px;
   height: 55px;
+  margin-right: 16px;
   background: transparent;
-}
-
-.DocSearch-Button:hover {
-  background: transparent;
-}
-.DocSearch-Button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-.DocSearch-Button:focus:not(:focus-visible) {
-  outline: none !important;
 }
 
 @media (min-width: 768px) {
-  .DocSearch-Button {
-    justify-content: flex-start;
+  .search-button {
+    flex-grow: 1;
+    margin-right: 3rem;
+    justify-content: flex-end;
     width: 100%;
   }
 }
 
-.DocSearch-Button .DocSearch-Search-Icon {
+.search-button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.search-button:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+.search-button .DocSearch-Search-Icon {
   color: var(--vt-c-text-2);
   transition: color 0.5s;
   fill: currentColor;
@@ -162,7 +118,7 @@ function load() {
 }
 
 @media (min-width: 768px) {
-  .DocSearch-Button .DocSearch-Search-Icon {
+  .search-button .DocSearch-Search-Icon {
     top: 1px;
     margin-right: 10px;
     width: 15px;
@@ -170,11 +126,11 @@ function load() {
   }
 }
 
-.DocSearch-Button:hover .DocSearch-Search-Icon {
+.search-button:hover .DocSearch-Search-Icon {
   color: var(--vt-c-text-1);
 }
 
-.DocSearch-Button-Placeholder {
+.search-placeholder {
   transition: color 0.5s;
   font-size: 13px;
   font-weight: 500;
@@ -184,16 +140,16 @@ function load() {
 }
 
 @media (min-width: 960px) {
-  .DocSearch-Button-Placeholder {
+  .search-placeholder {
     display: inline-block;
   }
 }
 
-.DocSearch-Button:hover .DocSearch-Button-Placeholder {
+.search-button:hover .search-placeholder {
   color: var(--vt-c-text-1);
 }
 
-.DocSearch-Button .DocSearch-Button-Key {
+.search-button .search-key {
   margin-top: 2px;
   border: 1px solid var(--vt-c-divider);
   border-right: none;
@@ -206,7 +162,7 @@ function load() {
   min-width: 0;
 }
 
-.DocSearch-Button .DocSearch-Button-Key + .DocSearch-Button-Key {
+.search-button .search-key + .search-key {
   border-right: 1px solid var(--vt-c-divider);
   border-left: none;
   border-radius: 0 4px 4px 0;
@@ -214,18 +170,18 @@ function load() {
   padding-right: 6px;
 }
 
-.DocSearch-Button:hover .DocSearch-Button-Key {
+.search-button:hover .search-key {
   border-color: var(--vt-c-brand-light);
   color: var(--vt-c-brand-light);
 }
 
 @media (min-width: 768px) {
-  .DocSearch-Button .DocSearch-Button-Key {
+  .search-button .search-key {
     display: inline-block;
   }
 }
 
-.DocSearch-Button-Key {
+.search-key {
   font-size: 12px;
   font-weight: 500;
   height: 20px;

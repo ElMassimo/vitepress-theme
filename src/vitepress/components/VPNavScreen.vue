@@ -29,8 +29,8 @@ function unlockBodyScroll() {
     <div v-if="open" class="VPNavScreen" ref="screen">
       <div class="container">
         <VPNavScreenMenu class="menu" />
-        <VPNavScreenAppearance class="appearance" />
         <VPNavScreenSocialLinks class="social-links" />
+        <VPNavScreenAppearance class="appearance" />
       </div>
     </div>
   </transition>
@@ -82,15 +82,11 @@ function unlockBodyScroll() {
   max-width: 288px;
 }
 
-.menu + .appearance {
+.appearance {
   margin-top: 24px;
 }
 
-.menu + .social-links {
+.social-links {
   margin-top: 16px;
-}
-
-.appearance + .social-links {
-  margin-top: 12px;
 }
 </style>

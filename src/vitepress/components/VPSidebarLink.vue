@@ -46,8 +46,8 @@ const closeSideBar = inject('close-sidebar') as () => void
 }
 
 .link-text {
-  line-height: 20px;
-  font-size: 13px;
+  line-height: 22px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--vt-c-text-2);
   transition: color 0.5s;

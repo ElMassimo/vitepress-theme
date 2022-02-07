@@ -4,7 +4,6 @@ import VPNavBarSearch from './VPNavBarSearch.vue'
 import VPNavBarMenu from './VPNavBarMenu.vue'
 import VPNavBarAppearance from './VPNavBarAppearance.vue'
 import VPNavBarSocialLinks from './VPNavBarSocialLinks.vue'
-import VPNavBarExtra from './VPNavBarExtra.vue'
 import VPNavBarHamburger from './VPNavBarHamburger.vue'
 
 defineProps<{
@@ -18,11 +17,10 @@ defineProps<{
       <VPNavBarTitle />
 
       <div class="content">
-        <VPNavBarSearch class="search" />
+        <VPNavBarSearch/>
         <VPNavBarMenu class="menu" />
-        <VPNavBarAppearance class="appearance" />
         <VPNavBarSocialLinks class="social-links" />
-        <VPNavBarExtra class="extra" />
+        <VPNavBarAppearance class="appearance" />
         <VPNavBarHamburger
           class="hamburger"
           :active="isScreenOpen"
@@ -69,13 +67,11 @@ defineProps<{
   flex-grow: 1;
 }
 
-.menu + .appearance {
-  margin-left: 8px;
+.appearance {
+  margin-left: 2rem;
 }
-.menu + .social-links {
-  margin-left: 12px;
-}
-.appearance + .social-links {
-  margin-left: 12px;
+
+.social-links {
+  margin-left: 1.5rem;
 }
 </style>

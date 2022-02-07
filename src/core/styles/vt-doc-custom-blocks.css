@@ -42,10 +42,10 @@
 }
 
 .vt-doc .custom-block.tip {
-  border: 1px solid var(--vt-c-brand);
+  border: 1px solid var(--vt-c-tip);
 }
 .vt-doc .custom-block.tip:before {
-  color: var(--vt-c-brand);
+  color: var(--vt-c-tip);
 }
 
 .vt-doc .custom-block.warning {

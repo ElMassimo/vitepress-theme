@@ -16,7 +16,7 @@ const { config } = useConfig()
   display: none;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
   .VPNavBarAppearance {
     display: block;
   }

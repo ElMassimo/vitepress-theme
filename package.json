@@ -1,7 +1,7 @@
 {
-  "name": "@vue/theme",
+  "name": "@mussi/vitepress-theme",
   "version": "1.0.0",
-  "description": "The design system for Vue.js.",
+  "description": "A vitepress theme for documentation websites.",
   "main": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
@@ -14,26 +14,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/theme.git"
+    "url": "git+https://github.com/ElMassimo/vitepress-theme.git"
   },
   "keywords": [
     "vue",
     "design-system"
   ],
-  "author": "Evan You",
+  "author": "Maximo Mussini",
   "license": "MIT",
-  "homepage": "https://theme.vuejs.org",
-  "bugs": {
-    "url": "https://github.com/vuejs/theme/issues"
-  },
+  "homepage": "https://github.com/ElMassimo/vitepress-theme",
   "scripts": {
     "lint": "prettier --check --write --parser typescript \"{__tests__,docs,src,types}/**/*.ts\"",
     "lint:fail": "prettier --check --parser typescript \"{__tests__,docs,src,types}/**/*.ts\"",
     "type": "tsc --noEmit",
-    "test": "yarn lint && yarn type",
-    "dev": "vitepress dev demo",
-    "demo-build": "vitepress build demo",
-    "serve": "yarn demo-build && vitepress serve demo"
+    "test": "pnpm lint && pnpm type"
   },
   "dependencies": {
     "@docsearch/css": "^3.0.0-alpha.41",

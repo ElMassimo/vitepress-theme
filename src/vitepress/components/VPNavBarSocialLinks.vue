@@ -17,10 +17,9 @@ const { config } = useConfig()
 <style scoped>
 .VPNavBarSocialLinks {
   display: none;
-  margin-right: -10px;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
   .VPNavBarSocialLinks {
     display: flex;
   }

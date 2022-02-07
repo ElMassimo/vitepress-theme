@@ -13,6 +13,7 @@ const { theme } = useData()
 
     <p v-if="theme.footer?.copyright" class="copyright">
       {{ theme.footer.copyright }}
+      <VTLink v-if="theme.author" class="link" :href="theme.author.link" no-icon>{{ theme.author.name }}</VTLink>
     </p>
   </div>
 </template>

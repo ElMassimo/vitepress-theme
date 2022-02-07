@@ -3,7 +3,7 @@ import { useData } from 'vitepress'
 import { resolveHeaders, useActiveAnchor } from '../composables/outline'
 import { computed, inject, ref } from 'vue'
 
-const { page, frontmatter } = useData()
+const { page } = useData()
 const container = ref()
 const marker = ref()
 useActiveAnchor(container, marker)
@@ -29,7 +29,7 @@ const handleClick = ({ target: el }: Event) => {
       <ul class="root">
         <li v-for="{ text, link, children } in resolveHeaders(filteredHeaders)">
           <a class="outline-link" :href="link" @click="handleClick">{{ text }}</a>
-          <ul v-if="children && frontmatter.outline === 'deep'">
+          <ul v-if="children">
             <li v-for="{ text, link } in children">
               <a class="outline-link nested" :href="link" @click="handleClick">{{ text }}</a>
             </li>
@@ -51,7 +51,7 @@ const handleClick = ({ target: el }: Event) => {
   font-weight: 700;
   margin-bottom: 4px;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.4px;
 }
 
@@ -78,7 +78,7 @@ const handleClick = ({ target: el }: Event) => {
 .outline-marker {
   opacity: 0;
   position: absolute;
-  background-color: var(--vt-c-green);
+  background-color: var(--vt-c-brand);
   border-radius: 4px;
   width: 4px;
   height: 20px;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import '@docsearch/css'
 import docsearch from '@docsearch/js'
 import { useRoute, useRouter, useData } from 'vitepress'
 import { onMounted } from 'vue'
-import { DocSearchHit } from '@docsearch/react/dist/esm/types'
 import { AlgoliaSearchOptions } from '../config'
 
 const { theme } = useData()
@@ -120,3 +120,40 @@ function getRelativePath(absoluteUrl: string) {
 <template>
   <div id="docsearch"></div>
 </template>
+
+<style>
+.DocSearch {
+  --docsearch-primary-color: var(--vt-c-brand);
+  --docsearch-highlight-color: var(--docsearch-primary-color);
+  --docsearch-text-color: var(--vt-c-text-1);
+  --docsearch-muted-color: var(--vt-c-text-2);
+  --docsearch-searchbox-shadow: none;
+  --docsearch-searchbox-focus-background: transparent;
+  --docsearch-key-gradient: transparent;
+  --docsearch-key-shadow: none;
+  --docsearch-modal-background: var(--vt-c-bg-soft);
+  --docsearch-footer-background: var(--vt-c-bg);
+}
+
+.dark .DocSearch {
+  --docsearch-modal-shadow: none;
+  --docsearch-footer-shadow: none;
+  --docsearch-logo-color: var(--vt-c-text-2);
+  --docsearch-hit-background: var(--vt-c-bg-mute);
+  --docsearch-hit-color: var(--vt-c-text-2);
+  --docsearch-hit-shadow: none;
+}
+
+.dark .DocSearch-Footer {
+  border-top: 1px solid var(--vt-c-divider);
+}
+
+.dark .DocSearch-Form {
+  background-color: var(--vt-c-bg-mute);
+}
+
+.DocSearch-Form {
+  background-color: white;
+  border: 1px solid var(--vt-c-brand);
+}
+</style>

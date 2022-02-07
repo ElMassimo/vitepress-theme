@@ -101,6 +101,7 @@
 
 .vt-doc a:hover {
   color: var(--vt-c-brand-highlight);
+  text-decoration: underline;
 }
 
 .vt-doc strong {
