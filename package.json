@@ -1,6 +1,6 @@
 {
   "name": "@mussi/vitepress-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A vitepress theme for documentation websites.",
   "main": "src/index.ts",
   "exports": {
