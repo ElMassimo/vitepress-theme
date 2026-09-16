@@ -1,14 +1,16 @@
+import type { Theme } from 'vitepress'
+import DefaultTheme from 'vitepress/theme'
 import './styles/index.css'
-import VPApp from './components/VPApp.vue'
-import VPNotFound from './components/VPNotFound.vue'
-import { Theme } from 'vitepress'
-import { withConfigProvider } from './composables/config'
 
-const VPTheme: Theme = {
-  Layout: withConfigProvider(VPApp),
-  NotFound: VPNotFound
-}
+/**
+ * The VitePress default theme with a small set of shared refinements.
+ *
+ * Keeping this package as an extension—rather than a fork—means consumers get
+ * new VitePress markup, behavior, accessibility, and bug fixes automatically.
+ */
+const VPTheme = {
+  extends: DefaultTheme
+} satisfies Theme
 
 export { VPTheme }
-
 export type { Config } from './config'
